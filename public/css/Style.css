@@ -1,0 +1,10 @@
+html{
+    font-family: 'BeaufordLOLbold';
+}
+
+@font-face {
+    font-family: BeauforLOLbold;
+    src: url('../fonts/BeauforLOL-TTF/BeaufortforLOL-Bold.ttf');
+    font-style: normal;
+    font-weight: 700;  
+}

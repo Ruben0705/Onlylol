@@ -1,0 +1,23 @@
+.titulo{
+    font-family: 'BeaufordLOLbold';
+    margin: 10px;
+}
+
+.presentacion{
+    margin-top: 45rem !important;
+    margin-left: 100rem !important; 
+    font-family: 'BeaufordLOLbold';
+}
+
+body {
+    font-family: 'BeaufordLOLbold';
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100%;
+    background-image: url('../img/ImagenIndex.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #091428;
+    display: flex;
+}
