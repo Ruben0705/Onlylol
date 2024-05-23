@@ -1,11 +1,13 @@
-.titulo{
+.title{
     font-family: 'BeaufordLOLbold';
     margin: 10px;
+    font-size: 100px;
+    font-weight: bold;
 }
 
 .presentacion{
-    margin-top: 45rem !important;
-    margin-left: 100rem !important; 
+    margin-top: 27rem !important;
+    margin-left: 88rem !important; 
     font-family: 'BeaufordLOLbold';
 }
 
@@ -15,7 +17,7 @@ body {
     padding: 0;
     width: 100vw;
     height: 100%;
-    background-image: url('../img/ImagenIndex.jpg');
+    background-image: url('../../img/ImagenIndex.jpg') !important;
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #091428;

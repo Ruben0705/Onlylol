@@ -1,0 +1,27 @@
+#content{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 6rem;
+}
+
+.champion-container {
+    display: inline-block; 
+    margin-right: 10px;
+    text-align: center; 
+}
+.champion-container > p {
+    overflow: hidden;
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+  }
+
+.champion {
+    width: 100px;
+    height: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .champion-container > p {
+      display: none;
+    }
+  }

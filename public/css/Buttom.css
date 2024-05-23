@@ -1,0 +1,65 @@
+.continuar {
+    cursor: pointer;
+    font-family: 'BeaufordLOLbold' !important;
+    transition: all .2s;
+    padding: 10px 20px;
+    border-radius: 100px !important;
+    background: #091428;
+    display: flex;
+    align-items: center;
+    color: white !important;
+  }
+  
+  .continuar:hover {
+    background: #0397AB;
+  }
+  
+  .continuar > svg {
+    width: 34px;
+    margin-left: 10px;
+    transition: transform .3s ease-in-out;
+  }
+  
+  .continuar:hover svg {
+    transform: translateX(5px);
+  }
+  
+  .continuar:active {
+    transform: scale(0.95);
+  }
+  
+  .navbar-prueba {
+    background: #030910;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .prueba {
+    font-family: 'BeaufordLOLbold';
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 5px 15px; 
+    background: #1e2328;
+    color: #cdbe91;
+    box-shadow: inset 0 0 2px #000000;
+    border-image: linear-gradient(to bottom, #c8aa6d, #7a5c29);
+    border-image-slice: 1;
+    border-width: 2px;
+  }
+  
+  .prueba:hover {
+    text-shadow: 0 0 5px #ffffff80;
+    box-shadow: 0 0 8px 0 #ffffff50;
+    background: linear-gradient(to bottom, #1e2328, #433d2b);
+    cursor: pointer;
+    transition: 0.1s;
+  }
+  
+  .prueba:active {
+    text-shadow: none;
+    box-shadow: none;
+    color: #cdbe9130;
+  }
+  

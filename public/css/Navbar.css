@@ -1,61 +1,69 @@
 /* Estilos para el navbar */
 navbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 6rem;
-    width: 100%;
-    padding: 2rem;
-    background: linear-gradient(to top, #091428 , #010A13);
-    overflow: hidden;
-    padding-right: 20px;
-    z-index: 999;
-    display: flex;
-    font-family: "BeaufordLOLbold";
-    justify-content: space-between;
-    align-items: center;
-  }
-    
-    .navbar .center-items {
-      display: flex;
-      justify-content: center;
-      flex-grow: 1;
-    }
-    
-    .navbar .login {
-      margin-left: auto;
-    }
-    
-    .navbar a {
-      display: block;
-      color: #c8aa6e;
-      text-align: center;
-      padding: 15px 25px;
-      text-decoration: none;
-      font-size: 14pt !important;
-      transition: text-shadow 0.3s;
-      font-weight: bold !important;
-      line-height: 18pt;
-      letter-spacing: 25;
-    }
-    
-    .navbar a:hover {
-      text-shadow: 0px 0px 10px #f0e6d2; 
-      color: #f0e6d2;
-    }
-  
-  .navbar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      justify-content: space-around;
-    }
-    
-    
-  .logoPerfil{
-      display: flex;
-      max-height: 4rem !important;
-      margin-left: -3rem;
-      margin-right: -1rem;
-  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 6rem;
+  width: 100%;
+  padding: 2rem;
+  background: linear-gradient(to top, #091428, #010a13);
+  overflow: hidden;
+  padding-right: 20px;
+  z-index: 999;
+  display: flex;
+  font-family: "BeaufordLOLbold";
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .center-items {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.navbar .login {
+  margin-left: auto;
+}
+
+.navbar a {
+  display: block;
+  color: #c8aa6e;
+  text-align: center;
+  padding: 15px 25px;
+  text-decoration: none;
+  font-size: 14pt !important;
+  transition: text-shadow 0.3s;
+  font-weight: bold !important;
+  line-height: 18pt;
+  letter-spacing: 25;
+}
+
+.navbar a:hover {
+  text-shadow: 0px 0px 10px #f0e6d2;
+  color: #f0e6d2;
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.logoPerfil {
+  display: flex;
+  max-height: 4rem !important;
+  margin-left: -3rem;
+  margin-right: -1rem;
+}
+.Onlylol{
+  max-height: 5rem !important;
+  max-width: 5rem;
+}
+.logoOnlylol:hover .Onlylol {
+  content: url('../../img/Logo/onlylol.hover.png');
+  transition: content 1s;
+  text-shadow: 0px 0px 10px #f0e6d2;
+}
