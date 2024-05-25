@@ -17,7 +17,7 @@
 
 <body>
   <navbar>
-    <a href="Index.php" class="logoOnlylol"><img src="/img/Logo/onlylol.png" alt="Logo de onlylol" class="Onlylol"></a>
+    <a href="Index.php" class="logoOnlylol"><img src="img/Logo/onlylol.png" alt="Logo de onlylol" class="Onlylol"></a>
     <div class="navbar">
       <div class="center-items">
         <a href="#">JUGABILIDAD</a>
@@ -37,12 +37,6 @@
       Donde buscar las mejor informacion de tus campeones
     </span>
     <div id="search-container">
-      <select id="region-select">
-        <option value="na1">North America</option>
-        <option value="euw1">Europe West</option>
-        <option value="eun1">Europe Nordic & East</option>
-        <!-- Añade más regiones según sea necesario -->
-      </select>
       <input type="text" id="search-input" placeholder="Buscar...">
       <div id="results"></div>
     </div>
