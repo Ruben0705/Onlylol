@@ -1,27 +1,32 @@
-#content{
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 6rem;
+#content {
+  margin-left: 11rem;
+  margin-right: 1rem;
+  max-width: 25%;
+  margin-top: 17rem;
+  padding-left: 51px;
 }
 
 .champion-container {
-    display: inline-block; 
-    margin-right: 10px;
-    text-align: center; 
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
 }
 .champion-container > p {
-    overflow: hidden;
-    white-space: nowrap; 
-    text-overflow: ellipsis;
-  }
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
 .champion {
-    width: 100px;
-    height: auto;
+  max-width: 50%;
 }
 
 @media only screen and (max-width: 600px) {
-    .champion-container > p {
-      display: none;
-    }
+  .champion-container > p {
+    display: none;
   }
+}
+
+
+
+

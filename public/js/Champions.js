@@ -1,30 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const apiKey = 'RGAPI-68f53cfa-f7bd-4e27-abe0-54851da20a34';
     const championsDiv = document.getElementById('champions');
-    const championDetailsDiv = document.getElementById('champion-details');
     const searchInput = document.getElementById('search');
 
-    fetch('https://ddragon.leagueoflegends.com/cdn/12.5.1/data/es_ES/champion.json')
+    fetch('https://ddragon.leagueoflegends.com/cdn/14.10.1/data/es_ES/champion.json')
         .then(response => response.json())
         .then(data => {
             const champions = data.data;
             for (let champ in champions) {
                 const championContainer = document.createElement('div'); 
                 championContainer.className = 'champion-container';
+                
                 const img = document.createElement('img');
-                img.src = `https://ddragon.leagueoflegends.com/cdn/12.5.1/img/champion/${champions[champ].image.full}`;
+                img.src = `https://ddragon.leagueoflegends.com/cdn/14.10.1/img/champion/${champions[champ].image.full}`;
                 img.className = 'champion';
                 img.alt = champions[champ].name;
-                img.addEventListener('click', () => showChampionDetails(champions[champ]));
+                img.addEventListener('click', () => redirectToChampionPage(champions[champ]));
+                
                 championContainer.appendChild(img);
+                
                 const championName = document.createElement('p'); 
                 championName.textContent = champions[champ].name;
-                championName.style.maxWidth = '100px'; 
+                championName.style.maxWidth = '60px';  
                 championName.style.overflow = 'hidden'; 
                 championName.style.textOverflow = 'ellipsis'; 
+                championName.style.marginLeft = '1.875rem'; 
+                
                 championContainer.appendChild(championName); 
                 championsDiv.appendChild(championContainer); 
             }
+        })
+        .catch(error => {
+            console.error('Error fetching champion data:', error);
         });
 
     searchInput.addEventListener('input', (e) => {
@@ -40,17 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    function showChampionDetails(champion) {
-        championDetailsDiv.innerHTML = `
-            <h2>${champion.name}</h2>
-            <p>${champion.title}</p>
-            <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg" alt="${champion.name}" style="width:100%;">
-            <div class="champion-detail">
-                <strong>Rol:</strong> ${champion.tags.join(', ')}
-            </div>
-            <div class="champion-detail">
-                <strong>Descripción:</strong> ${champion.blurb}
-            </div>
-        `;
+    function redirectToChampionPage(champion) {
+        window.location.href = `ChampionCompleto.php?champion=${champion.id}`;
     }
 });
