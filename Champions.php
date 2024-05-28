@@ -10,7 +10,7 @@
 </head>
 <body>
     <navbar>
-        <a href="Index.php" class="logoOnlylol"><img src="/img/Logo/onlylol.png" alt="Logo de onlylol" class="Onlylol"></a>
+        <a href="Index.php" class="logoOnlylol"><img src="img/Logo/onlylol.png" alt="Logo de onlylol" class="Onlylol"></a>
         <div class="navbar">
             <div class="center-items">
                 <a href="#">JUGABILIDAD</a>

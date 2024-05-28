@@ -21,7 +21,7 @@
     <div class="navbar">
       <div class="center-items">
         <a href="#">JUGABILIDAD</a>
-        <a href="#">NOTICIAS</a>
+        <a href="Players.php">JUGADORES</a>
         <a href="Champions.php">CAMPEONES</a>
       </div>
 

@@ -1,7 +1,4 @@
 #content {
-  margin-left: 11rem;
-  margin-right: 1rem;
-  max-width: 25%;
   margin-top: 17rem;
 }
 
@@ -27,5 +24,10 @@
 }
 
 
-
+#search{
+  align-items: center;
+  border-radius: 50px;
+  width: 50% !important;
+  height: 50px;
+}
 
