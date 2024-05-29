@@ -1,38 +1,55 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $hashtag = $_POST['hashtag'];
-    $region = $_POST['region'];
-
-    $regionUrls = [
-        'Americas' => 'americas.api.riotgames.com',
-        'Europa' => 'europe.api.riotgames.com',
-        'Esport' => 'esports.api.riotgames.com',
-        'Asia' => 'asia.api.riotgames.com'
-    ];
-
-    if (isset($regionUrls[$region])) {
-        $regionUrl = $regionUrls[$region];
+    $userInput = $_POST['user_input'];
+    
+    if (strpos($userInput, '#') !== false) {
+        list($username, $hashtag) = explode('#', $userInput);
     } else {
-        $error = "La región '$region' no tiene una URL asociada.";
+        $error = "El formato del nombre de usuario debe ser 'nombre#hashtag'.";
     }
-
+    
     if (!isset($error)) {
-        $api_key = 'RGAPI-b821746e-bd59-459a-af6f-2f597eed3f11';
-        $url = "https://$regionUrl/riot/account/v1/accounts/by-riot-id/$username/$hashtag?api_key=$api_key";
+        $region = $_POST['region'];
 
+        $regionUrls = [
+            'Americas' => 'americas.api.riotgames.com',
+            'Europa' => 'europe.api.riotgames.com',
+            'Esport' => 'esports.api.riotgames.com',
+            'Asia' => 'asia.api.riotgames.com'
+        ];
 
-        $response = @file_get_contents($url);
-        if ($response !== false) {
-            $data = json_decode($response, true);
-
-            if (isset($data['puuid'])) {
-                $profile = $data;
-            } else {
-                $error = "No se encontraron resultados para el nombre de usuario '$username' en la región '$region'.";
-            }
+        if (isset($regionUrls[$region])) {
+            $regionUrl = $regionUrls[$region];
         } else {
-            $error = "Hubo un error al realizar la solicitud a la API de la región '$region'.";
+            $error = "La región '$region' no tiene una URL asociada.";
+        }
+
+        if (!isset($error)) {
+            $api_key = 'RGAPI-6c8a6d83-ef27-48aa-b886-d881e5c54b3e';
+            $url = "https://$regionUrl/riot/account/v1/accounts/by-riot-id/$username/$hashtag?api_key=$api_key";
+
+            $response = @file_get_contents($url);
+            if ($response !== false) {
+                $data = json_decode($response, true);
+
+                if (isset($data['puuid'])) {
+                    $profile = $data;
+
+                    $summonerUrl = "https://$regionUrl/lol/summoner/v4/summoners/by-puuid/{$profile['puuid']}?api_key=$api_key";
+                    $summonerResponse = @file_get_contents($summonerUrl);
+                    if ($summonerResponse !== false) {
+                        $summonerData = json_decode($summonerResponse, true);
+                        $profileIconId = $summonerData['profileIconId'];
+                        $profileIconUrl = "http://ddragon.leagueoflegends.com/cdn/14.10.1/img/profileicon/$profileIconId.png";
+                    } else {
+                        $error = "No se pudo obtener información adicional del perfil.";
+                    }
+                } else {
+                    $error = "No se encontraron resultados para el nombre de usuario '$username' en la región '$region'.";
+                }
+            } else {
+                $error = "Hubo un error al realizar la solicitud a la API de la región '$region'.";
+            }
         }
     }
 }
@@ -40,22 +57,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscar Perfil de Usuario</title>
 </head>
-
 <body>
     <h1>Buscar Perfil de Usuario</h1>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        <label for="username">Nombre de Usuario:</label>
-        <input type="text" id="username" name="username" required>
-
-        <label for="hashtag">Hashtag:</label>
-        <input type="text" id="hashtag" name="hashtag" required>
-        <p>Introduce el hashtag asociado al usuario.</p>
+        <label for="user_input">Nombre de Usuario:</label>
+        <input type="text" id="user_input" name="user_input" placeholder="nombre#hashtag" required>
+        <p>Introduce el nombre de usuario seguido del hashtag (p. ej. nombre#hashtag).</p>
 
         <label for="region">Región:</label>
         <select name="region" id="region" required>
@@ -65,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <option value="Asia">Asia</option>
         </select>
         <p>Selecciona la región correspondiente al usuario.</p>
-
+        
         <button type="submit">Buscar</button>
     </form>
 
@@ -73,9 +85,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h2>Perfil Encontrado</h2>
         <p><strong>Nombre de Usuario:</strong> <?php echo htmlspecialchars($profile['gameName']); ?></p>
         <p><strong>Tagline:</strong> <?php echo htmlspecialchars($profile['tagLine']); ?></p>
+        <?php if (isset($profileIconUrl)): ?>
+            <p><strong>Icono de Perfil:</strong></p>
+            <img src="<?php echo htmlspecialchars($profileIconUrl); ?>" alt="Icono de Perfil">
+        <?php endif; ?>
     <?php elseif (isset($error)): ?>
         <p><?php echo $error; ?></p>
     <?php endif; ?>
 </body>
-
 </html>

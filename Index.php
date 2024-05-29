@@ -42,5 +42,6 @@
     </div>
   </div>
 </body>
-  <script src="/public/js/Champions.js"></script>
+<script src="/public/js/Champions.js"></script>
+
 </html>
