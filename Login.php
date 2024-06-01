@@ -4,14 +4,12 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Onlylol</title>
     <link rel="stylesheet" href="public/css/Login.css" />
 </head>
-
 <body>
     <div class="container">
         <div class="login-container">
@@ -22,8 +20,7 @@ session_start();
                 <div class="language">
                     <p>ES(EU)</p>
                     <i id="globe">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Globe_icon_2.svg/800px-Globe_icon_2.svg.png"
-                            width="20" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Globe_icon_2.svg/800px-Globe_icon_2.svg.png" width="20" />
                     </i>
                 </div>
             </div>
@@ -31,11 +28,11 @@ session_start();
                 <p>LOGIN</p>
 
                 <form method="POST" action="Autenticacion.php" onkeyup="check()" id="login" autocomplete="off">
-                    <input type="text" name="login" placeholder="Correo electrónico o Nombre de Usuario" required />
-                    <input type="password" name="password" placeholder="Contraseña" required />
+                    <input type="text" name="login" placeholder="Correo electrónico o Nombre de Usuario" required>
+                    <input type="password" name="password" placeholder="Contraseña" required>
 
                     <div class="checkbox">
-                        <input type="checkbox" name="keep" id="keep" />
+                        <input type="checkbox" name="keep" id="keep">
                         <label for="keep">No olvidar</label>
                     </div>
 
@@ -71,5 +68,4 @@ session_start();
         }
     </script>
 </body>
-
 </html>

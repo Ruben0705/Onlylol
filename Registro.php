@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -23,7 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
         if ($conn->query($sql) === TRUE) {
-            header("Location: login.php");
+            $_SESSION['username'] = $username;
+            setcookie("username", $username, time() + (86400 * 30), "/"); // 86400 = 1 día
+            header("Location: index.php");
             exit();
         } else {
             $error = "Error: " . $sql . "<br>" . $conn->error;
@@ -35,14 +39,12 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Onlylol - Registro</title>
     <link rel="stylesheet" href="public/css/Login.css" />
 </head>
-
 <body>
     <div class="container">
         <div class="login-container">
@@ -53,8 +55,7 @@ $conn->close();
                 <div class="language">
                     <p>ES(EU)</p>
                     <i id="globe">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Globe_icon_2.svg/800px-Globe_icon_2.svg.png"
-                            width="20" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Globe_icon_2.svg/800px-Globe_icon_2.svg.png" width="20" />
                     </i>
                 </div>
             </div>
@@ -103,5 +104,4 @@ $conn->close();
         }
     </script>
 </body>
-
 </html>

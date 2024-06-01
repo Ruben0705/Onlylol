@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if (!isset($error)) {
-            $api_key = 'RGAPI-6c8a6d83-ef27-48aa-b886-d881e5c54b3e';
+            $api_key = 'RGAPI-59f2a60a-3320-4810-bb4d-7858cb2e05b4';
             $url = "https://$regionUrl/riot/account/v1/accounts/by-riot-id/$username/$hashtag?api_key=$api_key";
 
             $response = @file_get_contents($url);

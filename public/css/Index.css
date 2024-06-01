@@ -21,5 +21,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #091428;
-    display: flex;
+    background-attachment: fixed;
+    overflow-x: hidden;
+
 }

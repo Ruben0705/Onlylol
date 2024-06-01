@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (isset($_COOKIE['username']) && !isset($_SESSION['username'])) {
+    $_SESSION['username'] = $_COOKIE['username'];
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -26,11 +35,19 @@
       </div>
 
       <div class="login">
-        <a href="login.php">LOGIN</a>
+        <?php if (isset($_SESSION['username'])): ?>
+          <a href="profile.php"><?php echo htmlspecialchars($_SESSION['username']); ?></a>
+          <a href="logout.php">LOGOUT</a>
+        <?php else: ?>
+          <a href="login.php">LOGIN</a>
+        <?php endif; ?>
       </div>
-      <a href="login.php"><img src="img/Perfil/champion_series_icon.png" alt="iconoPerfil" class="logoPerfil"></a>
+      <a href="profile.php">
+        <img src="img/Perfil/champion_series_icon.png" alt="iconoPerfil" class="logoPerfil">
+      </a>
     </div>
   </navbar>
+
   <div class="presentacion">
     <span class="title"> ONLYLOL </span>
     <span class="subtitle">
