@@ -1,5 +1,9 @@
+body{
+  background-color: #F0E6D2 !important;
+}
+
 #content {
-  margin-top: 17rem;
+  margin-top: 10rem;
 }
 
 .champion-container {
@@ -7,6 +11,15 @@
   margin-right: 10px;
   text-align: center;
 }
+
+#champions {
+  background-color: #091428;
+  color: #c8aa6e;
+  font-family: "BeaufordLOLbold";
+  margin: 10rem;
+  padding: 1rem;
+}
+
 .champion-container > p {
   overflow: hidden;
   white-space: nowrap;
@@ -17,17 +30,22 @@
   max-width: 50%;
 }
 
+.header-container {
+  font-size: 2rem;
+  text-align: center;
+  margin: 20px;
+}
+
 @media only screen and (max-width: 600px) {
   .champion-container > p {
     display: none;
   }
 }
 
-
-#search{
-  align-items: center;
+#search {
   border-radius: 50px;
   width: 50% !important;
   height: 50px;
+  margin-left: 25%;
+  margin-bottom: -9rem;
 }
-

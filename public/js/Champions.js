@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             for (const role in rolesMap) {
                 const roleHeader = document.createElement('h2');
+                roleHeader.className = 'header-container';
                 roleHeader.textContent = roleTranslation[role] || role;
                 championsDiv.appendChild(roleHeader);
 
