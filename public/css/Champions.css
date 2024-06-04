@@ -1,5 +1,5 @@
-body{
-  background-color: #F0E6D2 !important;
+body {
+  background-color: #f0e6d2 !important;
 }
 
 #content {
@@ -10,14 +10,19 @@ body{
   display: inline-block;
   margin-right: 10px;
   text-align: center;
+  margin-top: 2rem;
 }
 
 #champions {
   background-color: #091428;
+  border-radius: 10px;
   color: #c8aa6e;
   font-family: "BeaufordLOLbold";
-  margin: 10rem;
-  padding: 1rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  margin-bottom: 10rem;
+  margin-top: 5rem;
+  padding-bottom: 2rem  ;
 }
 
 .champion-container > p {
@@ -33,7 +38,8 @@ body{
 .header-container {
   font-size: 2rem;
   text-align: center;
-  margin: 20px;
+  padding: 2rem;
+  text-decoration: underline #c8aa6e;
 }
 
 @media only screen and (max-width: 600px) {

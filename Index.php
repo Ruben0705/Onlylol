@@ -28,10 +28,11 @@ $cookieConsent = isset($_COOKIE['cookie-consent']) ? $_COOKIE['cookie-consent'] 
   <link rel="stylesheet" href="public/css/Navbar.css" />
   <link rel="stylesheet" href="public/css/Index.css" />
   <link rel="stylesheet" href="public/css/Buscador.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
   <link rel="shortcut icon" href="/img/onlylol.png">
   <link rel="icon" href="/img/Logo/onlylol.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <?php if ($cookieConsent === null): ?>
@@ -45,33 +46,45 @@ $cookieConsent = isset($_COOKIE['cookie-consent']) ? $_COOKIE['cookie-consent'] 
 <?php endif; ?>
 
 <body>
-  <navbar>
-    <a href="Index.php" class="logoOnlylol"><img src="img/Logo/onlylol.png" alt="Logo de onlylol" class="Onlylol"></a>
+  <header>
     <div class="navbar">
-      <div class="center-items">
-        <a href="#">JUGABILIDAD</a>
-        <a href="Players.php">JUGADORES</a>
-        <a href="Champions.php">CAMPEONES</a>
-      </div>
-
-      <div class="login">
+      <div class="logo"><a href="Index.php"><img src="img/Logo/onlylol.png"></a></div>
+      <ul class="links">
+        <li><a href="#">JUGABILIDAD</a></li>
+        <li><a href="Champions.php">CAMPEONES</a></li>
+        <li><a href="Players.php">JUGADORES</a></li>
+      </ul>
+      <div class="perfil-container">
         <?php if (isset($_SESSION['username'])): ?>
           <a href="Perfil.php"><?php echo htmlspecialchars($_SESSION['username']); ?></a>
-          <a href="logout.php">LOGOUT</a>
+          <a href="logout.php" class="perfil">LOGOUT</a>
         <?php else: ?>
-          <a href="login.php">LOGIN</a>
+          <a href="login.php" class="perfil">LOGIN</a>
         <?php endif; ?>
+        <div class="logoPerfil"><a href="Login.php"><img src="img/Perfil/champion_series_icon.png"></a></div>
       </div>
-      <a href="Perfil.php">
-        <img src="img/Perfil/champion_series_icon.png" alt="iconoPerfil" class="logoPerfil">
-      </a>
+      <div class="toggle_btn"><i class="fa-solid fa-bars"></i></div>
+      <div class="dropdown_menu">
+        <li><a href="#">JUGABILIDAD</a></li>
+        <li><a href="Champions.php">CAMPEONES</a></li>
+        <li><a href="Players.php">JUGADORES</a></li>
+        <li><?php if (isset($_SESSION['username'])): ?>
+            <a href="profile.php"><?php echo htmlspecialchars($_SESSION['username']); ?></a>
+            <a href="logout.php" class="perfilMenu">- LOGOUT</a>
+          <?php else: ?>
+            <a href="login.php" class="perfilMenu">- LOGIN</a>
+          <?php endif; ?>
+        </li>
+      </div>
     </div>
-  </navbar>
+  </header>
+  <script src="/public/js/Navbar.js"></script>
+
   <div class="presentacion-container">
     <div class="presentacion">
-     <span class="title"><img src="img/Logo/onlylol.png" alt="Logo de onlylol" class="logo-title">nlyLoL<br></span>
+      <span class="title"><img src="img/Logo/onlylol.png" alt="Logo de onlylol" class="logo-title">nlyLoL<br></span>
       <span class="subtitle">
-        Busca aquí la mejor información de tus campeones 
+        Busca aquí la mejor información de tus campeones
       </span>
       <div id="search-container" class="search-container">
         <input type="text" id="search-input" placeholder="Buscar...">
@@ -80,7 +93,6 @@ $cookieConsent = isset($_COOKIE['cookie-consent']) ? $_COOKIE['cookie-consent'] 
     </div>
   </div>
 </body>
-<script src="/public/js/Champions.js"></script>
 <script>
   document.cookie = "testcookie=1";
   let cookiesEnabled = document.cookie.indexOf("testcookie=") != -1;

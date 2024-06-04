@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $region = $_POST['region'];
     list($username, $hashtag) = explode('#', $usernameHashtag);
 
-    $api_key = 'RGAPI-31a8fa7d-29e0-4501-bce9-0f8563cb806b';
+    $api_key = 'RGAPI-c267073b-d25e-4653-a5e5-f73a42680aaf';
 
     $regionUrls = [
         'americas' => 'americas.api.riotgames.com',
@@ -20,16 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $url = "https://$base_url/riot/account/v1/accounts/by-riot-id/$username/$hashtag?api_key=$api_key";
 
-        // Realizar la solicitud a la API
-        $response = @file_get_contents($url); // Usar '@' para suprimir errores de file_get_contents
+
+        $response = @file_get_contents($url);
         if ($response !== false) {
             $data = json_decode($response, true);
 
-            // Verificar si se encontraron resultados
             if (isset($data['puuid'])) {
                 $puuid = $data['puuid'];
 
-                // Solicitar información adicional del jugador (nivel, imagen de perfil, etc.)
                 $summoner_url = "https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/$puuid?api_key=$api_key";
                 $summoner_response = @file_get_contents($summoner_url);
                 if ($summoner_response !== false) {
@@ -42,7 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             'summonerLevel' => $summoner_data['summonerLevel']
                         ];
 
-                        // Obtener la maestría de campeones
                         $mastery_url = "https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/{$summoner_data['id']}?api_key=$api_key";
                         $mastery_response = @file_get_contents($mastery_url);
                         if ($mastery_response !== false) {
@@ -52,7 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             });
                             $top_champions = array_slice($mastery_data, 0, 3);
 
-                            // Obtener los nombres de los campeones
                             $champion_data = @file_get_contents("http://ddragon.leagueoflegends.com/cdn/11.1.1/data/en_US/champion.json");
                             if ($champion_data !== false) {
                                 $champion_data = json_decode($champion_data, true)['data'];
@@ -88,14 +84,53 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscar Perfil de Usuario</title>
     <link rel="stylesheet" href="public/css/Players.css">
+    <link rel="stylesheet" href="public/css/Navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
-    <h1>Buscar Perfil de Usuario</h1>
+    <header>
+        <div class="navbar">
+            <div class="logo"><a href="Index.php"><img src="img/Logo/onlylol.png"></a></div>
+            <ul class="links">
+                <li><a href="#">JUGABILIDAD</a></li>
+                <li><a href="Champions.php">CAMPEONES</a></li>
+                <li><a href="Players.php">JUGADORES</a></li>
+            </ul>
+            <div class="perfil-container">
+                <?php if (isset($_SESSION['username'])): ?>
+                    <a href="Perfil.php"><?php echo htmlspecialchars($_SESSION['username']); ?></a>
+                    <a href="logout.php" class="perfil">LOGOUT</a>
+                <?php else: ?>
+                    <a href="login.php" class="perfil">LOGIN</a>
+                <?php endif; ?>
+                <div class="logoPerfil"><a href="Login.php"><img src="img/Perfil/champion_series_icon.png"></a></div>
+            </div>
+            <div class="toggle_btn"><i class="fa-solid fa-bars"></i></div>
+            <div class="dropdown_menu">
+                <li><a href="#">JUGABILIDAD</a></li>
+                <li><a href="Champions.php">CAMPEONES</a></li>
+                <li><a href="Players.php">JUGADORES</a></li>
+                <li><?php if (isset($_SESSION['username'])): ?>
+                        <a href="profile.php"><?php echo htmlspecialchars($_SESSION['username']); ?></a>
+                        <a href="logout.php" class="perfilMenu">- LOGOUT</a>
+                    <?php else: ?>
+                        <a href="login.php" class="perfilMenu">- LOGIN</a>
+                    <?php endif; ?>
+                </li>
+            </div>
+        </div>
+    </header>
+    <script src="/public/js/Navbar.js"></script>
+    
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <label for="usernameHashtag">Nombre de Usuario y Hashtag:</label>
         <input type="text" id="usernameHashtag" name="usernameHashtag" placeholder="Usuario#Hashtag" required>
@@ -115,7 +150,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p><strong>Tagline:</strong> <?php echo htmlspecialchars($profile['hashtag']); ?></p>
         <p><strong>Nivel:</strong> <?php echo htmlspecialchars($profile['summonerLevel']); ?></p>
         <p><strong>Imagen de Perfil:</strong></p>
-        <img src="http://ddragon.leagueoflegends.com/cdn/14.10.1/img/profileicon/<?php echo htmlspecialchars($profile['profileIconId']); ?>.png" alt="Icono de Perfil">
+        <img src="http://ddragon.leagueoflegends.com/cdn/14.10.1/img/profileicon/<?php echo htmlspecialchars($profile['profileIconId']); ?>.png"
+            alt="Icono de Perfil">
         <?php if (isset($top_champions)): ?>
             <h3>Top 3 Campeones con Más Maestría</h3>
             <ul>
@@ -123,7 +159,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <li>
                         <p>Nombre del Campeón: <?php echo htmlspecialchars($champion['championName']); ?></p>
                         <p>Puntos de Maestría: <?php echo htmlspecialchars($champion['championPoints']); ?></p>
-                        <img src="<?php echo htmlspecialchars($champion['championImage']); ?>" alt="<?php echo htmlspecialchars($champion['championName']); ?>">
+                        <img src="<?php echo htmlspecialchars($champion['championImage']); ?>"
+                            alt="<?php echo htmlspecialchars($champion['championName']); ?>">
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -131,26 +168,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php elseif (isset($error)): ?>
         <p><?php echo $error; ?></p>
     <?php endif; ?>
-
-    <div id="cookieConsent">
-        <div class="cookie-container">
-            <p>Esta página utiliza cookies para mejorar la experiencia del usuario. ¿Aceptas el uso de cookies?</p>
-            <button onclick="setCookie('accept')">Aceptar</button>
-            <button onclick="setCookie('decline')">Rechazar</button>
-        </div>
-    </div>
-
-    <script>
-        function setCookie(decision) {
-            document.cookie = "cookieConsent=" + decision + "; path=/; max-age=" + (60 * 60 * 24 * 30); // 30 días
-            document.getElementById('cookieConsent').style.display = 'none';
-        }
-
-        window.onload = function() {
-            if (document.cookie.split(';').some((item) => item.trim().startsWith('cookieConsent='))) {
-                document.getElementById('cookieConsent').style.display = 'none';
-            }
-        };
-    </script>
 </body>
+
 </html>

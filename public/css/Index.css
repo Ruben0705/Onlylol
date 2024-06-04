@@ -4,7 +4,7 @@
     font-weight: bold;
     text-align: left;
     line-height: -2rem;
-
+ 
 }
 
 .logo-title {
@@ -18,7 +18,7 @@
     margin: 1rem;
     font-size: 1.2rem;
     text-align: left;
-
+ 
 
 }
 
@@ -48,6 +48,7 @@
     max-width: 100%;
     font-family: 'BeaufordLOLbold';
     text-align: left;
+    color: #091428;
 }
 
 body {
@@ -65,7 +66,7 @@ body {
     overflow-y: hidden;
 }
 
-@media (max-width: 1426px) {
+@media (max-width: 1460px) {
 
     body {
         font-family: 'BeaufordLOLbold';
@@ -76,7 +77,6 @@ body {
         background-image: url('../../img/ImagenIndex.jpg') !important;
         background-repeat: no-repeat;
         backdrop-filter: brightness(40%);
-        
         background-size: cover;
         background-color: #091428;
         background-attachment: fixed;

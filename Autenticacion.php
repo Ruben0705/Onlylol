@@ -1,16 +1,14 @@
 <?php
 session_start();
 
-// Conexión a la base de datos
+
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "onlylol";
-
-// Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar conexión
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -19,19 +17,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = $_POST['login'];
     $password = $_POST['password'];
 
-    // Consultar si el login es un email o un nombre de usuario
     $sql = "SELECT * FROM users WHERE email='$login' OR username='$login'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
         if (password_verify($password, $user['password'])) {
-            // Configurar la sesión
             $_SESSION['username'] = $user['username'];
 
-            // Establecer la cookie si "No olvidar" está marcada
             if (isset($_POST['keep'])) {
-                setcookie("username", $user['username'], time() + (86400 * 30), "/"); // 86400 = 1 día
+                setcookie("username", $user['username'], time() + (86400 * 30), "/");
             }
 
             header("Location: index.php");

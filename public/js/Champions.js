@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Tank': 'Tanque'
     };
 
-    fetch('https://ddragon.leagueoflegends.com/cdn/14.10.1/data/es_ES/champion.json')
+    fetch('https://ddragon.leagueoflegends.com/cdn/14.11.1/data/es_ES/champion.json')
         .then(response => response.json())
         .then(data => {
             const champions = Object.values(data.data);
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     championContainer.dataset.championId = champ.id;
 
                     const img = document.createElement('img');
-                    img.src = `https://ddragon.leagueoflegends.com/cdn/14.10.1/img/champion/${champ.image.full}`;
+                    img.src = `https://ddragon.leagueoflegends.com/cdn/14.11.1/img/champion/${champ.image.full}`;
                     img.className = 'champion';
                     img.alt = champ.name;
                     img.addEventListener('click', () => redirectToChampionPage(champ));
