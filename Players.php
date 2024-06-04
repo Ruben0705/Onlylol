@@ -3,6 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usernameHashtag = $_POST['usernameHashtag'];
     $region = $_POST['region'];
     list($username, $hashtag) = explode('#', $usernameHashtag);
+    error_reporting(0);
 
     $api_key = 'RGAPI-c267073b-d25e-4653-a5e5-f73a42680aaf';
 
@@ -64,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 }
                             }
                         } else {
-                            $error = "Hubo un error al obtener la información de maestría de campeones. URL: $mastery_url";
+                            $error = "Hubo un error al obtener la información de maestría de campeones.";
                         }
                     } else {
                         $error = "No se pudo obtener la imagen de perfil y el nivel del jugador.";
@@ -76,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $error = "No se encontraron resultados para el nombre de usuario '$username' y hashtag '$hashtag'.";
             }
         } else {
-            $error = "Hubo un error al realizar la solicitud a la API de la región '$region'. URL: $url";
+            $error = "Hubo un error al realizar la solicitud de la región";
         }
     }
 }
@@ -89,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscar Perfil de Usuario</title>
-    <link rel="stylesheet" href="public/css/Players.css">
+    <link rel="stylesheet" href="public/css/Player.css">
     <link rel="stylesheet" href="public/css/Navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
@@ -130,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </header>
     <script src="/public/js/Navbar.js"></script>
-    
+
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <label for="usernameHashtag">Nombre de Usuario y Hashtag:</label>
         <input type="text" id="usernameHashtag" name="usernameHashtag" placeholder="Usuario#Hashtag" required>
@@ -146,12 +147,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <?php if (isset($profile)): ?>
         <h2>Perfil Encontrado</h2>
-        <p><strong>Nombre de Usuario:</strong> <?php echo htmlspecialchars($profile['username']); ?></p>
-        <p><strong>Tagline:</strong> <?php echo htmlspecialchars($profile['hashtag']); ?></p>
-        <p><strong>Nivel:</strong> <?php echo htmlspecialchars($profile['summonerLevel']); ?></p>
-        <p><strong>Imagen de Perfil:</strong></p>
+        <p class= "userName"><strong>Nombre de Usuario:</strong> <?php echo htmlspecialchars($profile['username']); ?></p>
+        <p class= "tag"><strong>Tagline:</strong> <?php echo htmlspecialchars($profile['hashtag']); ?></p>
+        <p class= "lvl"><strong>Nivel:</strong> <?php echo htmlspecialchars($profile['summonerLevel']); ?></p>
         <img src="http://ddragon.leagueoflegends.com/cdn/14.10.1/img/profileicon/<?php echo htmlspecialchars($profile['profileIconId']); ?>.png"
-            alt="Icono de Perfil">
+            alt="Icono de Perfil" class="iconPerf">
         <?php if (isset($top_champions)): ?>
             <h3>Top 3 Campeones con Más Maestría</h3>
             <ul>
