@@ -19,13 +19,6 @@ session_start();
                 <a href="index.php">
                     <img src="img/Logo/onlylol.png" width="40" alt="Logo League of Legends" />
                 </a>
-                <div class="language">
-                    <p>ES(EU)</p>
-                    <i id="globe">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Globe_icon_2.svg/800px-Globe_icon_2.svg.png"
-                            width="20" />
-                    </i>
-                </div>
             </div>
             <div class="login-body">
                 <p>LOGIN</p>

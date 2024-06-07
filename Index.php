@@ -23,7 +23,7 @@ $cookieConsent = isset($_COOKIE['cookie-consent']) ? $_COOKIE['cookie-consent'] 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Onlylol</title>
-
+  <link rel="stylesheet" href="public/css/Cookies.css" />
   <link rel="stylesheet" href="public/css/Style.css" />
   <link rel="stylesheet" href="public/css/Navbar.css" />
   <link rel="stylesheet" href="public/css/Index.css" />
@@ -50,7 +50,7 @@ $cookieConsent = isset($_COOKIE['cookie-consent']) ? $_COOKIE['cookie-consent'] 
     <div class="navbar">
       <div class="logo"><a href="Index.php"><img src="img/Logo/onlylol.png"></a></div>
       <ul class="links">
-        <li><a href="#">JUGABILIDAD</a></li>
+        <li><a href="NotasParche.php">NOTAS DEL PARCHE</a></li>
         <li><a href="Champions.php">CAMPEONES</a></li>
         <li><a href="Players.php">JUGADORES</a></li>
       </ul>
@@ -65,7 +65,7 @@ $cookieConsent = isset($_COOKIE['cookie-consent']) ? $_COOKIE['cookie-consent'] 
       </div>
       <div class="toggle_btn"><i class="fa-solid fa-bars"></i></div>
       <div class="dropdown_menu">
-        <li><a href="#">JUGABILIDAD</a></li>
+        <li><a href="NotasParche.php">NOTAS DEL PARCHE</a></li>
         <li><a href="Champions.php">CAMPEONES</a></li>
         <li><a href="Players.php">JUGADORES</a></li>
         <li><?php if (isset($_SESSION['username'])): ?>
@@ -107,41 +107,4 @@ $cookieConsent = isset($_COOKIE['cookie-consent']) ? $_COOKIE['cookie-consent'] 
     }
   };
 </script>
-<style>
-  .cookie-banner {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    z-index: 1000;
-  }
-
-  .cookie-banner p {
-    margin: 0;
-    padding: 0 10px;
-    display: inline-block;
-  }
-
-  .cookie-banner form {
-    display: inline-block;
-    margin: 0 5px;
-  }
-
-  .cookie-banner button {
-    background-color: #fff;
-    color: #333;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin: 0 5px;
-  }
-
-  .cookie-banner button:hover {
-    background-color: #ddd;
-  }
-</style>
-
 </html>

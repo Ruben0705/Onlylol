@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: BeaufordLOLbold;
+}
+
+:root {
+  --dorado: #c8aa6e;
+  --doradoClaro: #f0e6d2;
+  --azulOscuro: #010a13;
+  --azul: #091428;
+}
+
+body {
+  font-family: BeaufordLOLbold;
+  background-color: var(--doradoClaro) !important;
+  color: var(--doradoClaro);
+  margin: 0;
+  padding: 0;
+}
+
+#content {
+  padding: 5rem 1rem 1rem 1rem;
+}
+
+#champion-details {
+  background-color: var(--azul);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.champion-header {
+  text-align: center;
+  border-bottom: 2px solid var(--dorado);
+}
+
+.champion-image {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  border: 2px solid var(--dorado);
+}
+
+#champion-details h2 {
+  color: var(--dorado);
+  margin-bottom: 0.5rem;
+}
+
+.champion-title {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.champion-info {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 1rem;
+}
+
+.champion-detail {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+#champions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.header-container {
+  width: 100%;
+  text-align: center;
+  color: var(--dorado);
+  margin: 1rem 0;
+  font-size: 1.5rem;
+}
+
+.champion-container {
+  background-color: var(--azul);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.champion-container img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.champion-container p {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.875rem;
+}
