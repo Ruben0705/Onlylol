@@ -1,5 +1,14 @@
 <?php
-session_start(); ?>
+session_start();
+
+$patchNotesUrl = "https://ddragon.leagueoflegends.com/api/versions.json";
+$patchNotesResponse = file_get_contents($patchNotesUrl);
+$patchNotes = json_decode($patchNotesResponse, true);
+if (!$patchNotes) {
+  die("Error al obtener la versión del parche.");
+}
+$currentPatchVersion = $patchNotes[0];
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -58,7 +67,10 @@ session_start(); ?>
     <main id="champion-details">
     </main>
   </div>
+  <script>
+    const currentPatchVersion = "<?php echo $currentPatchVersion; ?>";
+  </script>
   <script src="public/js/Champions.js"></script>
 </body>
 
-</ht>
+</html>
