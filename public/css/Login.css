@@ -182,3 +182,12 @@ table {
   background-size: cover;
   height: 100vh;
 }
+
+@media (max-width: 800px){
+  .container .login-container {
+    width: 100%;
+  }
+  .background-container{
+    display: none;
+  }
+}

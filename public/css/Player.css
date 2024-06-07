@@ -1,7 +1,6 @@
 body {
   background-color: #f0e6d2 !important;
   margin: 0;
-  text-align: center;
 }
 
 h1,
@@ -48,4 +47,14 @@ img {
 
 img.iconPerf {
   border-radius: 100%;
+}
+.container{
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  input {
+    width: 70% !important;
+    height: 50px;
+  }
 }

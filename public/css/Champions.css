@@ -1,5 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: BeaufordLOLbold;
+}
+
+:root {
+  --dorado: #c8aa6e;
+  --doradoClaro: #f0e6d2;
+  --azulOscuro: #010a13;
+  --azul: #091428;
+}
+
 body {
-  background-color: #f0e6d2 !important;
+  background-color: var(--doradoClaro) !important;
 }
 
 #content {
@@ -11,21 +25,105 @@ body {
   margin-right: 10px;
   text-align: center;
   margin-top: 2rem;
+  cursor: pointer;
 }
 
 #champions {
-  background-color: #091428;
+  background-color: var(--azul);
   border-radius: 10px;
-  color: #c8aa6e;
+  color: var(--dorado);
   font-family: "BeaufordLOLbold";
   margin-left: 10rem;
   margin-right: 10rem;
   margin-bottom: 10rem;
   margin-top: 5rem;
-  padding-bottom: 2rem  ;
+  padding-bottom: 2rem;
 }
 
-.champion-container > p {
+.champion-container>p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.champion {
+  max-width: 50%;
+}
+
+
+
+.header-container {
+  font-size: 2rem;
+  text-align: center;
+  padding: 2rem;
+  text-decoration: underline var(--dorado);
+}
+
+@media only screen and (max-width: 600px) {
+  .champion-container>p {
+    display: none;
+  }
+}
+
+#search {
+  border-radius: 50px;
+  width: 50% !important;
+  height: 50px;
+  margin-left: 25%;
+  margin-bottom: -9rem;
+  padding: 1rem;
+}
+
+@media (max-width: 800px) {
+  html {
+    font-size: 70%;
+}
+
+  .champion-container {
+    margin-right: 0px;
+  }
+
+  #champions {
+    margin: 0px;
+
+  }
+
+  #search {
+    width: 60% !important;
+    margin-bottom: 1rem;
+  }
+
+}
+---------
+body {
+  background-color: var(--doradoClaro) !important;
+}
+
+#content {
+  margin-top: 10rem;
+}
+
+.champion-container {
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+#champions {
+  background-color: var(--azul);
+  border-radius: 10px;
+  color: var(--dorado);
+  font-family: "BeaufordLOLbold";
+  margin-left: 10rem;
+  margin-right: 10rem;
+  margin-bottom: 10rem;
+  margin-top: 5rem;
+  padding-bottom: 2rem;
+}
+
+.champion-container>p {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -39,11 +137,11 @@ body {
   font-size: 2rem;
   text-align: center;
   padding: 2rem;
-  text-decoration: underline #c8aa6e;
+  text-decoration: underline var(--dorado);
 }
 
 @media only screen and (max-width: 600px) {
-  .champion-container > p {
+  .champion-container>p {
     display: none;
   }
 }
@@ -55,4 +153,25 @@ body {
   margin-left: 25%;
   margin-bottom: -9rem;
   padding: 1rem;
+}
+
+@media (max-width: 800px) {
+  html {
+    font-size: 70%;
+}
+
+  .champion-container {
+    margin-right: 0px;
+  }
+
+  #champions {
+    margin: 0px;
+
+  }
+
+  #search {
+    width: 60% !important;
+    margin-bottom: 1rem;
+  }
+
 }
