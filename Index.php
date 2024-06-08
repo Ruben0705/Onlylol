@@ -50,7 +50,7 @@ $cookieConsent = isset($_COOKIE['cookie-consent']) ? $_COOKIE['cookie-consent'] 
     <div class="navbar">
       <div class="logo"><a href="Index.php"><img src="img/Logo/onlylol.png"></a></div>
       <ul class="links">
-        <li><a href="NotasParche.php">NOTAS DEL PARCHE</a></li>
+        <li><a href="MapaInteractivo.php">MAPA INTERACTIVO</a></li>
         <li><a href="Champions.php">CAMPEONES</a></li>
         <li><a href="Players.php">JUGADORES</a></li>
       </ul>
@@ -65,7 +65,7 @@ $cookieConsent = isset($_COOKIE['cookie-consent']) ? $_COOKIE['cookie-consent'] 
       </div>
       <div class="toggle_btn"><i class="fa-solid fa-bars"></i></div>
       <div class="dropdown_menu">
-        <li><a href="NotasParche.php">NOTAS DEL PARCHE</a></li>
+        <li><a href="MapaInteractivo.php">MAPA INTERACTIVO</a></li>
         <li><a href="Champions.php">CAMPEONES</a></li>
         <li><a href="Players.php">JUGADORES</a></li>
         <li><?php if (isset($_SESSION['username'])): ?>
@@ -107,4 +107,5 @@ $cookieConsent = isset($_COOKIE['cookie-consent']) ? $_COOKIE['cookie-consent'] 
     }
   };
 </script>
+
 </html>
