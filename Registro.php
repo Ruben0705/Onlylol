@@ -17,20 +17,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-    $sql = "SELECT id FROM users WHERE email='$email' OR username='$username'";
-    $result = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT id FROM users WHERE email=? OR username=?");
+    $stmt->bind_param("ss", $email, $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         $error = "El correo o el nombre de usuario ya existen.";
     } else {
-        $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
-        if ($conn->query($sql) === TRUE) {
+        $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $username, $email, $password);
+        if ($stmt->execute() === TRUE) {
             $_SESSION['username'] = $username;
             setcookie("username", $username, time() + (86400 * 30), "/"); // 86400 = 1 día
             header("Location: index.php");
             exit();
         } else {
-            $error = "Error: " . $sql . "<br>" . $conn->error;
+            $error = "Error: " . $stmt->error;
         }
     }
 }
@@ -39,12 +42,14 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Onlylol - Registro</title>
     <link rel="stylesheet" href="public/css/Login.css" />
 </head>
+
 <body>
     <div class="container">
         <div class="login-container">
@@ -98,4 +103,5 @@ $conn->close();
         }
     </script>
 </body>
+
 </html>
