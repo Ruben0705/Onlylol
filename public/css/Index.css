@@ -1,93 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: BeaufordLOLbold;
+}
+
+:root {
+  --dorado: #c8aa6e;
+  --doradoClaro: #f0e6d2;
+  --azulOscuro: #010a13;
+  --azul: #091428;
+}
+
 .title {
-    font-family: 'BeaufordLOLbold';
-    font-size: 6.25rem;
-    font-weight: bold;
-    text-align: left;
-    line-height: -2rem;
- 
+  font-family: "BeaufordLOLbold";
+  font-size: 6.25rem;
+  font-weight: bold;
+  text-align: left;
+  line-height: -2rem;
 }
 
 .logo-title {
-    width: 6.25rem;
-    height: auto;
-    vertical-align: middle;
-
+  width: 6.25rem;
+  height: auto;
+  vertical-align: middle;
 }
-
-.subtitle {
-    margin: 1rem;
-    font-size: 1.2rem;
-    text-align: left;
- 
-
-}
-
-.search-container {
-    display: flex;
-    justify-content: left;
-    width: 100%;
-    margin-top: 1rem;
-    margin: 1rem;
-
-}
-
 
 .presentacion-container {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: flex-start;
-    min-height: 100vh;
-    position: absolute;
-    right: 10%;
-    top: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: flex-start;
+  min-height: 100vh;
+  position: absolute;
+  right: 10%;
+  top: 34%;
 }
 
 .presentacion {
-    max-width: 100%;
-    font-family: 'BeaufordLOLbold';
-    text-align: left;
-    color: #091428;
+  max-width: 100%;
+  font-family: "BeaufordLOLbold";
+  text-align: left;
+  color: var(--azul);
+}
+
+.acordeon-container {
+  width: 100%;
+  margin: auto;
+  margin-top: 1rem;
+}
+
+.presentacion-container h2 {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.presentacion-container p {
+  font-size: 1rem;
+  font-family: "BeaufordLOLbold";
+  font-weight: bold;
+}
+
+.acordeon {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.acordeon label {
+  display: block;
+  padding: 1rem;
+  font-size: 2rem;
+  background: var(--azulOscuro);
+  color: var(--doradoClaro);
+  cursor: pointer;
+  margin-bottom: 0.1rem;
+  transition: all 300ms ease;
+}
+
+.acordeon label:hover {
+  background-clip: var(--azul);
+}
+
+.acordeon .contenido-acordeon {
+  padding: 0px;
+  margin: 0px 20px;
+  max-height: 0px;
+  overflow: hidden;
+  transition: all 300ms ease;
+}
+
+.btn-acordeon:checked ~ .contenido-acordeon {
+  max-height: 600px;
+  padding: 15px 0px;
+}
+
+.btn-acordeon {
+  display: none;
 }
 
 body {
-    font-family: 'BeaufordLOLbold';
+  font-family: "BeaufordLOLbold";
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../img/ImagenIndex.jpg") !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--azul);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+@media (max-width: 1460px) {
+  body {
+    font-family: "BeaufordLOLbold";
     margin: 0;
     padding: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('../../img/ImagenIndex.jpg') !important;
+    background-image: url("../../img/ImagenIndex.jpg") !important;
     background-repeat: no-repeat;
+    backdrop-filter: brightness(40%);
     background-size: cover;
-    background-color: #091428;
+    background-color: var(--azul);
     background-attachment: fixed;
     overflow-x: hidden;
     overflow-y: hidden;
-}
+  }
 
-@media (max-width: 1460px) {
+  .presentacion {
+    max-width: 100%;
+    font-family: "BeaufordLOLbold";
+    text-align: left;
+    color: var(--dorado);
+  }
 
-    body {
-        font-family: 'BeaufordLOLbold';
-        margin: 0;
-        padding: 0;
-        width: 100vw;
-        height: 100vh;
-        background-image: url('../../img/ImagenIndex.jpg') !important;
-        background-repeat: no-repeat;
-        backdrop-filter: brightness(40%);
-        background-size: cover;
-        background-color: #091428;
-        background-attachment: fixed;
-        overflow-x: hidden;
-        overflow-y: hidden;
-    }
+  .contenido-acordeon {
+    width: 90%;
+  }
 
-    .presentacion {
-        max-width: 100%;
-        font-family: 'BeaufordLOLbold';
-        text-align: left;
-        color: #C8AA6E;
-    }
-
+  .acordeon {
+    background-color: var(--doradoClaro);
+    color: var(--azul);
+  }
 }
