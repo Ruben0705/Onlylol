@@ -50,7 +50,7 @@ $cookieConsent = isset($_COOKIE['cookie-consent']) ? $_COOKIE['cookie-consent'] 
     <div class="navbar">
       <div class="logo"><a href="Index.php"><img src="img/Logo/onlylol.png"></a></div>
       <ul class="links">
-        <li><a href="NotasParche.php">NOTAS DEL PARCHE</a></li>
+        <li><a href="MapaInteractivo.php">MAPA INTERACTIVO</a></li>
         <li><a href="Champions.php">CAMPEONES</a></li>
         <li><a href="Players.php">JUGADORES</a></li>
       </ul>
@@ -65,7 +65,7 @@ $cookieConsent = isset($_COOKIE['cookie-consent']) ? $_COOKIE['cookie-consent'] 
       </div>
       <div class="toggle_btn"><i class="fa-solid fa-bars"></i></div>
       <div class="dropdown_menu">
-        <li><a href="NotasParche.php">NOTAS DEL PARCHE</a></li>
+        <li><a href="MapaInteractivo.php">MAPA INTERACTIVO</a></li>
         <li><a href="Champions.php">CAMPEONES</a></li>
         <li><a href="Players.php">JUGADORES</a></li>
         <li><?php if (isset($_SESSION['username'])): ?>
@@ -83,15 +83,48 @@ $cookieConsent = isset($_COOKIE['cookie-consent']) ? $_COOKIE['cookie-consent'] 
   <div class="presentacion-container">
     <div class="presentacion">
       <span class="title"><img src="img/Logo/onlylol.png" alt="Logo de onlylol" class="logo-title">nlyLoL<br></span>
-      <span class="subtitle">
-        Busca aquí la mejor información de tus campeones
-      </span>
-      <div id="search-container" class="search-container">
-        <input type="text" id="search-input" placeholder="Buscar...">
-        <div id="results"></div>
+      <h2>Todo lo que necesitas acerca de League of Legends</h2>
+      <div class="acordeon-container">
+
+        <div class="acordeon" id="border-top">
+          <input type="radio" name="acordeon" id="btn-acordeon1" class="btn-acordeon">
+          <label for="btn-acordeon1">Diseña tu estrategia</label>
+          <div class="contenido-acordeon">
+            <p>Dibuja tu estrategia directamente en el mapa.</p>
+            <a href="MapaInteractivo.php">Ir al Mapa Interactivo</a>
+          </div>
+        </div>
+
+        <div class="acordeon">
+          <input type="radio" name="acordeon" id="btn-acordeon2" class="btn-acordeon">
+          <label for="btn-acordeon2">Información de campeones</label>
+          <div class="contenido-acordeon">
+            <p>Busca aquí la mejor información de tus campeones.</p>
+            <a href="Champions.php">Ir a toda la información de campeones</a>
+          </div>
+        </div>
+
+        <div class="acordeon">
+          <input type="radio" name="acordeon" id="btn-acordeon3" class="btn-acordeon">
+          <label for="btn-acordeon3">Buscador de jugadores</label>
+          <div class="contenido-acordeon">
+            <p>¿Buscas el perfil de alguien? Haz clic aquí y busca a quién quieras.</p>
+            <a href="Players.php">Ir a búsqueda de Jugadores</a>
+          </div>
+        </div>
+
+        <div class="acordeon" id="border-bottom">
+          <input type="radio" name="acordeon" id="btn-acordeon4" class="btn-acordeon">
+          <label for="btn-acordeon4">Inicia sesión o regístrate</label>
+          <div class="contenido-acordeon">
+            <p>Inicia sesión si tienes cuenta, o crea una en un clic.</p>
+            <a href="Login.php">Ir al inicio de sesión</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
 </body>
 <script>
   document.cookie = "testcookie=1";
@@ -107,4 +140,5 @@ $cookieConsent = isset($_COOKIE['cookie-consent']) ? $_COOKIE['cookie-consent'] 
     }
   };
 </script>
+
 </html>

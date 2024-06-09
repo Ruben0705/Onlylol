@@ -5,7 +5,7 @@ $patchNotesUrl = "https://ddragon.leagueoflegends.com/api/versions.json";
 $patchNotesResponse = file_get_contents($patchNotesUrl);
 $patchNotes = json_decode($patchNotesResponse, true);
 $currentPatchVersion = $patchNotes[0];
-$serv ='EUW1' ;
+$serv = 'EUW1';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usernameHashtag = $_POST['usernameHashtag'];
@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar Perfil de Usuario</title>
+    <title>Buscar jugadores</title>
     <link rel="stylesheet" href="public/css/Player.css">
     <link rel="stylesheet" href="public/css/Navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -111,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="navbar">
             <div class="logo"><a href="Index.php"><img src="img/Logo/onlylol.png"></a></div>
             <ul class="links">
-                <li><a href="NotasParche.php">NOTAS DEL PARCHE</a></li>
+                <li><a href="MapaInteractivo.php">MAPA INTERACTIVO</a></li>
                 <li><a href="Champions.php">CAMPEONES</a></li>
                 <li><a href="Players.php">JUGADORES</a></li>
             </ul>
@@ -126,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="toggle_btn"><i class="fa-solid fa-bars"></i></div>
             <div class="dropdown_menu">
-                <li><a href="NotasParche.php">NOTAS DEL PARCHE</a></li>
+                <li><a href="MapaInteractivo.php">MAPA INTERACTIVO</a></li>
                 <li><a href="Champions.php">CAMPEONES</a></li>
                 <li><a href="Players.php">JUGADORES</a></li>
                 <li><?php if (isset($_SESSION['username'])): ?>

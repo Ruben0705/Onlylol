@@ -162,39 +162,39 @@ $conn->close();
 </head>
 
 <body>
-<header>
-    <div class="navbar">
-      <div class="logo"><a href="Index.php"><img src="img/Logo/onlylol.png"></a></div>
-      <ul class="links">
-        <li><a href="NotasParche.php">NOTAS DEL PARCHE</a></li>
-        <li><a href="Champions.php">CAMPEONES</a></li>
-        <li><a href="Players.php">JUGADORES</a></li>
-      </ul>
-      <div class="perfil-container">
-        <?php if (isset($_SESSION['username'])): ?>
-          <a href="Perfil.php"><?php echo htmlspecialchars($_SESSION['username']); ?></a>
-          <a href="logout.php" class="perfil">LOGOUT</a>
-        <?php else: ?>
-          <a href="login.php" class="perfil">LOGIN</a>
-        <?php endif; ?>
-        <div class="logoPerfil"><a href="Login.php"><img src="img/Perfil/champion_series_icon.png"></a></div>
-      </div>
-      <div class="toggle_btn"><i class="fa-solid fa-bars"></i></div>
-      <div class="dropdown_menu">
-        <li><a href="NotasParche.php">NOTAS DEL PARCHE</a></li>
-        <li><a href="Champions.php">CAMPEONES</a></li>
-        <li><a href="Players.php">JUGADORES</a></li>
-        <li><?php if (isset($_SESSION['username'])): ?>
-            <a href="profile.php"><?php echo htmlspecialchars($_SESSION['username']); ?></a>
-            <a href="logout.php" class="perfilMenu">- LOGOUT</a>
-          <?php else: ?>
-            <a href="login.php" class="perfilMenu">- LOGIN</a>
-          <?php endif; ?>
-        </li>
-      </div>
-    </div>
-  </header>
-  <script src="/public/js/Navbar.js"></script>
+    <header>
+        <div class="navbar">
+            <div class="logo"><a href="Index.php"><img src="img/Logo/onlylol.png"></a></div>
+            <ul class="links">
+                <li><a href="MapaInteractivo.php">MAPA INTERACTIVO</a></li>
+                <li><a href="Champions.php">CAMPEONES</a></li>
+                <li><a href="Players.php">JUGADORES</a></li>
+            </ul>
+            <div class="perfil-container">
+                <?php if (isset($_SESSION['username'])): ?>
+                    <a href="Perfil.php"><?php echo htmlspecialchars($_SESSION['username']); ?></a>
+                    <a href="logout.php" class="perfil">LOGOUT</a>
+                <?php else: ?>
+                    <a href="login.php" class="perfil">LOGIN</a>
+                <?php endif; ?>
+                <div class="logoPerfil"><a href="Login.php"><img src="img/Perfil/champion_series_icon.png"></a></div>
+            </div>
+            <div class="toggle_btn"><i class="fa-solid fa-bars"></i></div>
+            <div class="dropdown_menu">
+                <li><a href="MapaInteractivo.php">MAPA INTERACTIVO</a></li>
+                <li><a href="Champions.php">CAMPEONES</a></li>
+                <li><a href="Players.php">JUGADORES</a></li>
+                <li><?php if (isset($_SESSION['username'])): ?>
+                        <a href="profile.php"><?php echo htmlspecialchars($_SESSION['username']); ?></a>
+                        <a href="logout.php" class="perfilMenu">- LOGOUT</a>
+                    <?php else: ?>
+                        <a href="login.php" class="perfilMenu">- LOGIN</a>
+                    <?php endif; ?>
+                </li>
+            </div>
+        </div>
+    </header>
+    <script src="/public/js/Navbar.js"></script>
     <div class="main-content">
         <div class="profile-container">
             <h1>Perfil de Usuario</h1>

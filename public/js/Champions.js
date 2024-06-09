@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
         Tank: "Tanque",
     };
 
-    // Coloca el fetch dentro del evento DOMContentLoaded para que se ejecute cuando el DOM esté completamente cargado
     fetch(`https://ddragon.leagueoflegends.com/cdn/${currentPatchVersion}/data/es_ES/champion.json`)
         .then((response) => response.json())
         .then((data) => {
@@ -28,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             });
 
-            // Este código debe estar dentro del .then() para poder acceder a rolesMap
             for (const role in rolesMap) {
                 const roleHeader = document.createElement("h2");
                 roleHeader.className = "header-container";
