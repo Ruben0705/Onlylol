@@ -17,8 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = $_POST['login'];
     $password = $_POST['password'];
 
-    $sql = "SELECT * FROM users WHERE email='$login' OR username='$login'";
-    $result = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email=? OR username=?");
+    $stmt->bind_param("ss", $login, $login);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
@@ -43,12 +45,14 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onlylol - Login</title>
     <link rel="stylesheet" href="public/css/Login.css">
 </head>
+
 <body>
     <div class="container">
         <div class="login-container">
@@ -105,4 +109,5 @@ $conn->close();
         }
     </script>
 </body>
+
 </html>
