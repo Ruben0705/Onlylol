@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const canvas = document.getElementById("drawingCanvas");
   const map = document.getElementById("map");
 
-  // Set canvas size to match map size
   canvas.width = map.clientWidth;
   canvas.height = map.clientHeight;
 
@@ -65,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
   canvas.addEventListener("mouseup", () => (isDrawing = false));
   canvas.addEventListener("mouseout", () => (isDrawing = false));
 
-  // Handle touch events
   canvas.addEventListener("touchstart", (e) => {
     isDrawing = true;
     const touchPos = getTouchPos(canvas, e);
@@ -76,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
   canvas.addEventListener("touchend", () => (isDrawing = false));
   canvas.addEventListener("touchcancel", () => (isDrawing = false));
 
-  // Event listeners for width buttons
   document
     .getElementById("thinWidthBtn")
     .addEventListener("click", () => changeWidth(3));
@@ -87,15 +84,11 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("thickWidthBtn")
     .addEventListener("click", () => changeWidth(9));
 
-  // Event listener for clear button
   document.getElementById("clearBtn").addEventListener("click", clearCanvas);
-
-  // Event listener for color picker
   document
     .getElementById("colorPicker")
     .addEventListener("input", (e) => changeColor(e.target.value));
 
-  // Resize canvas on window resize
   window.addEventListener("resize", () => {
     const prevImage = new Image();
     prevImage.src = canvas.toDataURL();

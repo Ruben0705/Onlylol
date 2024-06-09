@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa Interactivo de League of Legends</title>
+    <title>Mapa Interactivo</title>
     <link rel="stylesheet" type="text/css" href="public/css/Map.css">
     <link rel="stylesheet" type="text/css" href="public/css/Navbar.css">
 </head>
